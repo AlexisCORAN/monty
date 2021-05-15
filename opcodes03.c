@@ -14,16 +14,14 @@ void op_div(stack_t **stack, unsigned int line_number)
 
 	if (var.stack_len < 2)
 	{
-		dprintf(STDOUT_FILENO,
-			"L%u: can't div, stack too short\n",
-			line_number);
+		dprintf(2, "L%u: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	n = (*stack)->n;
 	pop(stack, line_number);
 	if (n == 0)
 	{
-		dprintf(STDOUT_FILENO, "L%u: division by zero\n", line_number);
+		dprintf(2, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	(*stack)->n /= n;
@@ -43,7 +41,7 @@ void mul(stack_t **stack, unsigned int line_number)
 
 	if (var.stack_len < 2)
 	{
-		dprintf(STDOUT_FILENO, "L%u: can't mul, stack too short\n", line_number);
+		dprintf(2, "L%u: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	n = (*stack)->n;
