@@ -77,3 +77,48 @@ void swap(stack_t **stack, unsigned int line_number)
 	next->next = *stack;
 	*stack = next;
 }
+
+/**
+* add - add the top two elements of the stack
+*
+*@stack: double pointer tot he beginning of the stack
+*
+*@line_number: script line number
+*/
+
+void add(stack_t **stack, unsigned int line_number)
+{
+	int n = 0;
+
+	if (var.stack_len < 2)
+	{
+		dprintf(2, "L%u: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n += (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n += n;
+}
+
+
+/**
+* sub - subtract top element of stack from next element and push result
+*
+*@stack: double pointer to head of stack
+*
+*@line_number: line number of current operation
+*/
+
+void sub(stack_t **stack, unsigned int line_number)
+{
+	int n;
+
+	if (var.stack_len < 2)
+	{
+		dprintf(2, "L%u: can't sub, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n = (*stack)->n;
+	pop(stack, line_number);
+	(*stack)->n -= n;
+}
