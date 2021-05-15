@@ -1,5 +1,7 @@
 #include "monty.h"
 
+var_t var;
+
 /**
 * main - Monty bytecode interpreter
 * @argc: number of arguments passed
@@ -22,7 +24,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		dprintf(2, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -30,7 +32,7 @@ int main(int argc, char *argv[])
 
 	if (!file)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	on_exit(free_lineptr, &lineptr);
